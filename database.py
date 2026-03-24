@@ -1,3 +1,5 @@
+import os
+import shutil
 import sqlite3
 import random
 from typing import List, Tuple, Optional
@@ -8,6 +10,13 @@ from config import SUPER_ADMIN_ID
 class Database:
     def __init__(self, db_path: str = "/app/data/rolls.db"):
         self.db_path = db_path
+
+        os.makedirs("/app/data", exist_ok=True)
+
+        seed_db = "/app/rolls.db"
+        if not os.path.exists(self.db_path) and os.path.exists(seed_db):
+            shutil.copy2(seed_db, self.db_path)
+
         self.init_db()
 
     def get_conn(self) -> sqlite3.Connection:
