@@ -6,7 +6,7 @@ from config import SUPER_ADMIN_ID
 
 
 class Database:
-    def __init__(self, db_path: str = "rolls.db"):
+    def __init__(self, db_path: str = "/app/data/rolls.db"):
         self.db_path = db_path
         self.init_db()
 
