@@ -14,8 +14,8 @@ class Database:
         os.makedirs("/app/data", exist_ok=True)
 
         seed_db = "/app/rolls.db"
-if os.path.exists(seed_db):
-    shutil.copy2(seed_db, self.db_path)
+        if os.path.exists(seed_db):
+            shutil.copy2(seed_db, self.db_path)
 
         self.init_db()
 
